@@ -1,6 +1,6 @@
 '''The script converts Bowtie format to CisGenome format.
 
-Author: Likit Preeyano, preeyano@msu.edu.
+Author: Likit Preeyanon, preeyano@msu.edu.
 
 '''
 
