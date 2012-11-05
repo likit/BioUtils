@@ -18,9 +18,9 @@ print >> sys.stderr, 'Reading %s...', david_file
 for line in open(expr_file):
     cols = line.strip().split(',')
     geneid = cols[0]
-    expr = float(cols[4])
+    exprs = '\t'.join(cols[1:5])
     if geneid not in genes:
-        genes[geneid] = expr
+        genes[geneid] = exprs
     else:
         raise KeyError('duplicated gene ID')
 
@@ -29,4 +29,4 @@ print >> sys.stderr, 'Reading %s...', expr_file
 for line in open(david_file):
     geneid = line.strip().split(',')[0]
     if geneid in genes:
-        print '%s\t%.4f' % (geneid, genes[geneid])
+        print '%s\t%s' % (geneid, genes[geneid])
