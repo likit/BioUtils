@@ -4,6 +4,11 @@ import sys
 MIN_COV = 0.6
 fails = 0
 
+try:
+    MIN_COV = float(sys.argv[2])
+except IndexError:
+    pass
+
 for n, line in enumerate(open(sys.argv[1]), start=1):
     cols = line.strip().split()
     qSize = int(cols[10])
