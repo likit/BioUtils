@@ -30,4 +30,4 @@ for seq in db:
             chunk = seq[window:window + chunk_size]
             sequtil.write_fasta(sys.stdout, str(chunk), id=chunk_id)
             _id += 1
-            window += overlap_size
+            window += (chunk_size - overlap_size)
