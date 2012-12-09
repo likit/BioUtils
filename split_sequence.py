@@ -19,6 +19,7 @@ db = seqdb.SequenceFileDB(input_file)
 
 for seq in db:
     window = 0
+    print >> sys.stderr, 'Splitting %s...' % (seq)
     if len(db[seq]) <= chunk_size:
         sequtil.write_fasta(sys.stdout, str(db[seq]), id=seq)
     else:
