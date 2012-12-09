@@ -73,11 +73,12 @@ def main():
                                                 pairwiseMode=True)
 
     print >> sys.stderr, 'Adding sequences to an alignment database...'
-    for n, target in enumerate(targets):
-        aligndb += targets[target]
-        if n % 1000 == 0: print >> sys.stderr, '...', n
+    # for n, target in enumerate(targets):
+    #     aligndb += targets[target]
+    #     if n % 1000 == 0: print >> sys.stderr, '...', n
 
     for al in parse_alignments(align_file):
+        aligndb += targets[al.target]
         add_alignment(aligndb, al, targets, queries)
 
     print >> sys.stderr, 'Building the alignment database...'
