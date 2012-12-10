@@ -16,7 +16,7 @@ def main():
     for record in SeqIO.parse(fasta_file, 'fasta'):
         if len(record) >= size:
             print >> sys.stderr, 'Writing %s ..' % (record.id)
-            SeqIO.write(record, fasta_file, sys.stdout, 'fasta')
+            SeqIO.write(record, sys.stdout, 'fasta')
 
 
 if __name__=='__main__':
