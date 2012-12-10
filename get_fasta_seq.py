@@ -8,15 +8,17 @@ Output is written to standard output.
 import sys
 from Bio import SeqIO
 
-
 def getids(input_file):
     thelist = set()
     for seqid in input_file:
-        thelist.add(seqid.strip())
+        seqid = seqid.strip().lstrip('>')
+        thelist.add(seqid)
     return thelist
 
 def select(thelist, fasta_file):
+    print >> sys.stderr, 'total sequences = %d' % len(thelist)
     for rec in SeqIO.parse(fasta_file, 'fasta'):
+        rec.id = rec.id.split(' ')[0]
         if rec.id in thelist:
             print >> sys.stderr, 'Writing %s...' % rec.id
             SeqIO.write(rec, sys.stdout, 'fasta')
