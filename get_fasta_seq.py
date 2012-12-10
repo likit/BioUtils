@@ -10,14 +10,15 @@ from Bio import SeqIO
 
 
 def getids(input_file):
-    thelist = []
+    thelist = set()
     for seqid in input_file:
-        thelist.append(seqid.strip())
+        thelist.add(seqid.strip())
     return thelist
 
 def select(thelist, fasta_file):
     for rec in SeqIO.parse(fasta_file, 'fasta'):
         if rec.id in thelist:
+            print >> sys.stderr, 'Writing %s...' % rec.id
             SeqIO.write(rec, sys.stdout, 'fasta')
 
 if __name__=='__main__':
