@@ -15,7 +15,8 @@ def parse_input(input_file):
 
 def select_seq(input_sequences, fasta_file, min_size):
     for record in SeqIO.parse(fasta_file, 'fasta'):
-        if record.id not in input_sequences:
+        if (record.id not in input_sequences and
+                                    len(record) >= min_size):
             print >> sys.stderr, 'Writing %s' % record.id
             yield record
 

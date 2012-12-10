@@ -29,7 +29,7 @@ def main():
     print >> sys.stderr, 'Writing unmapped sequences...'
     for seq in db:
         sequence = db[seq]
-        if (seq not in input_sequences and len(sequence) > min_length):
+        if (seq not in input_sequences and len(sequence) >= min_length):
             print >> sys.stderr, 'Writing %s, %d bp' % (seq, len(sequence))
             sequtil.write_fasta(sys.stdout, str(sequence), id=seq)
 
