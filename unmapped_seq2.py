@@ -30,8 +30,8 @@ def main():
     for seq in db:
         sequence = db[seq]
         if (seq not in input_sequences and len(sequence) > min_length):
+            print >> sys.stderr, 'Writing %s, %d bp' % (seq, len(sequence))
             sequtil.write_fasta(sys.stdout, str(sequence), id=seq)
-            print >> sys.stderr, '%s has been written' % seq
 
 
 if __name__=='__main__':
