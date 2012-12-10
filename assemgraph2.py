@@ -31,6 +31,7 @@ def write_sequence(source, graph, targets, queries, ofile1, ofile2):
     visited_nodes = set()
     max_length = 0
     for node in nx.algorithms.dfs_preorder_nodes(graph, source):
+        print >> sys.stderr, '\t%s' % node
         seq = targets[node] if node in targets else queries[node]
 
         if len(seq) > max_length: max_length = len(seq)
@@ -86,7 +87,7 @@ def main():
             ofile1 = open(filename1, 'w')
             ofile2 = open(filename2, 'w')
             print >> sys.stderr, \
-                    'Writing cluster %d to a file...' % cluster_no,
+                    'Writing cluster %d to a file...' % cluster_no
             vnodes, max_length = (write_sequence(node, graph, targets,
                                                 queries, ofile1, ofile2))
             visited_nodes.update(vnodes)
@@ -95,7 +96,7 @@ def main():
                 print >> logfile, 'cluster_%d\t%s\t%d' % (cluster_no, n, size)
             ofile1.close()
             ofile2.close()
-            print >> sys.stderr, '\ttotal nodes = %d' % len(vnodes)
+            print >> sys.stderr, 'total nodes = %d' % len(vnodes)
 
             cluster_no += 1
 
