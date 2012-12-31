@@ -15,4 +15,4 @@ for cols in reader:
     end = int(cols[16])
     seq = genome[target][start:end]
     seqid = target + '_' + cols[9]
-    sequtil.write(seq, sys.stdout, id=seqid)
+    sequtil.write_fasta(sys.stdout, str(seq), id=seqid)
