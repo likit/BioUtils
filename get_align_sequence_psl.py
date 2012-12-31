@@ -8,7 +8,7 @@ psl_file = sys.argv[1]
 genome_file = sys.argv[2]
 genome = seqdb.SequenceFileDB(genome_file)
 
-reader = csv.reader(open(psl_file))
+reader = csv.reader(open(psl_file), dialect='excel-tab')
 for cols in reader:
     target = cols[13]
     start = int(cols[15])
