@@ -22,4 +22,4 @@ sequences = set([seq.strip() for seq in open(listfile)])
 for align in open(pslfile):
     query = align.split()[seqtype]
     if query in sequences:
-        print align
+        print align,
