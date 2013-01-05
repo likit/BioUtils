@@ -15,4 +15,5 @@ for row in reader:
     size = sum([int(s) for s in row[10].split(',')])
     strand = row[5]
     writer = csv.writer(sys.stdout, dialect='excel-tab')
-    writer.writerow([gene_id, 0, size, gene_id, 1000, strand])
+    writer.writerow([gene_id, 0, size, gene_id, 1000,
+                        strand, 0, size, '0,0,0', 1, size, 0])
