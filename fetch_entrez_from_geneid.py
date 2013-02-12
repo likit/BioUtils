@@ -5,11 +5,10 @@ Output is written to standard output.
 
 '''
 
+import os
 import sys
 import time
 from Bio import SeqIO, Entrez
-
-Entrez.email = 'preeyano@msu.edu'
 
 def parse(infile):
     '''Return a set of gene IDs from an input file.'''
@@ -42,6 +41,9 @@ def fetch(geneid):
 
 def main():
     infile = sys.argv[1]
+    Entrez.email = sys.argv[2]
+
+    outfile = os.path.splitext(infile)[0] + ".fa"
     records = []
 
     for geneid in parse(infile):
@@ -53,7 +55,7 @@ def main():
 
         time.sleep(3)
 
-    SeqIO.write(records, 'ectoderm.fna', 'fasta')
+    SeqIO.write(records, outfile, 'fasta')
 
     print >> sys.stderr, 'Total sequences = %d' % len(records)
 
