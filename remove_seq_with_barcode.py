@@ -3,7 +3,7 @@
 input_barcode can be a barcode sequence or a file containing a list of
 barcodes.
 
-The script assume input sequences in FASTA format with one line per sequence.
+The script works with output sequences from split_seqs.py in Mothur.
 
 '''
 
@@ -20,7 +20,7 @@ def read_barcode(input_barcode, is_file=False):
     else:
         if input_barcode:
             barcodes.add(input_barcode)
-            print >> sys.stderr, 'barcodes = %s' % input_barcode
+            # print >> sys.stderr, 'barcodes = %s' % input_barcode
 
     return barcodes
 
@@ -45,6 +45,11 @@ def remove(filename, barcodes):
 
 
 def main():
+    if len(sys.argv) < 3:
+        print >> sys.stderr, 'Usage: python remove_seq_with_barcode.py' +\
+            ' <sequence file> <barcode> or <barcodes file>'
+        raise SystemExit
+
     input_seq = sys.argv[1]
     input_barcode = sys.argv[2]
     barcodes = read_barcode(input_barcode,
