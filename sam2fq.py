@@ -8,7 +8,7 @@ fstmate = open(sys.argv[1], 'w')
 scndmate = open(sys.argv[2], 'w')
 unpaired = open(sys.argv[3], 'w')
 for line in sys.stdin:
-    items = line.split('\t')
+    items = line.strip().split('\t')
     name, qual, seq = items[0], items[10], items[9]
     if not read1:
         read1 = Read(name, qual, seq)
