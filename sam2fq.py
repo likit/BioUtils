@@ -1,3 +1,15 @@
+'''Extracts paired and single-end reads from BAM file.
+
+BAM file has to be sorted by name. The following commands
+can be used to sort and extract reads.
+
+samtools sort -n unmapped.bam unmapped.sorted
+samtools view unmapped.sorted.bam | python sam2fq.py r1.fq r2.fq un.fq
+
+where r1.fq, r2.fq and un.fq are output files for
+first mate, second mate and unpaired reads respectively.
+'''
+
 import sys
 from collections import namedtuple
 
